@@ -1,29 +1,40 @@
 {% extends 'shared/MainReferences.html' %}
-
+{% block title %}
+    {{ title }}
+{% endblock %}
 {% block content %}
-    <form action="" method="">
+    <h1>Contact</h1>
+    <hr>
+    <h5>{{ time }}</h5>
+    <form action="" method="post">
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control is-valid" id="name" placeholder="Arash">
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+            <label for="{{ contact.name.id_for_label }}" class="form-label">{{ contact.name.label }}</label>
+            {{ contact.name }}
+            {% for error in contact.name.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
         </div>
         <div class="mb-3">
-            <label for="subject" class="form-label">Subject</label>
-            <input type="email" class="form-control is-invalid" id="subject" placeholder="for fun">
-            <div id="validationServer04Feedback" class="invalid-feedback">
-                Please select a valid state.
-            </div>
+            <label for="{{ contact.subject.id_for_label }}" class="form-label">{{ contact.subject.label }}</label>
+            {{ contact.subject }}
+            {% for error in contact.subject.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1"
-                   placeholder="name@example.com">
+            <label for="{{ contact.email.id_for_label }}" class="form-label">{{ contact.email.label }}</label>
+            {{ contact.email }}
+            {% for error in contact.email.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
         </div>
         <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <label for="{{ contact.content.id_for_label }}" class="form-label">{{ contact.content.label }}</label>
+            {{ contact.content }}
+            {% for error in contact.content.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
         </div>
         <button type="submit" class="btn btn-success form-control">Send</button>
     </form>
