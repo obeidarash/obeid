@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Contact, Scrape
+from .models import Contact
 
 
 @admin.register(Contact)
@@ -10,8 +10,3 @@ class ContactAdmin(admin.ModelAdmin):
     list_filter = ('datetime',)
     list_editable = ('is_read',)
     list_per_page = 20
-
-
-@admin.register(Scrape)
-class ScrapeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'color', 'size', 'publish')
