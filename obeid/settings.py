@@ -36,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'obeid_contact',
+    'obeid_projects',
     'django_render_partial',
-    'background_task',
 ]
 
 MIDDLEWARE = [
