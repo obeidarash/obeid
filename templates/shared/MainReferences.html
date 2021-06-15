@@ -20,7 +20,8 @@
         <div class="col-xl-6">
 
             {% include 'shared/Navigation.html' %}
-
+            <h2>{% block heading %}{% endblock %}</h2>
+            <hr>
 
             {% block content %}{% endblock %}
 
