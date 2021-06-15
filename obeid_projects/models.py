@@ -29,7 +29,6 @@ class Project(models.Model):
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=256, unique=True, blank=True)
     progress = models.PositiveIntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(100)])
-    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, blank=True)
     objects = ProjectManager()
