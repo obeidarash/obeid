@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, EmailValidator
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
 
 
 class ProjectManager(models.Manager):
@@ -25,6 +26,7 @@ class Customer(models.Model):
     lastname = models.CharField(max_length=64, null=True, blank=True)
     email = models.EmailField(null=True, blank=True, validators=[EmailValidator])
     phone = models.CharField(max_length=32, blank=True, null=True)
+    country = CountryField(null=True, blank=True)
 
     def __str__(self):
         return "{} {}".format(self.name, self.lastname)
@@ -43,7 +45,7 @@ class Category(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=256, unique=True, blank=True)
+    slug = models.SlugField(max_length=256)
     content = models.TextField(null=True, blank=True)
     progress = models.PositiveIntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(100)])
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
