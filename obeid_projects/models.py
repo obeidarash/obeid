@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, EmailValidator
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
+from django.db.models.signals import pre_save
 
 
 class ProjectManager(models.Manager):
@@ -11,6 +12,9 @@ class ProjectManager(models.Manager):
             return qs.first()
         else:
             return None
+
+    def all_published_projects(self):
+        return self.get_queryset().filter(publish=True)
 
 
 class Tag(models.Model):
@@ -23,6 +27,7 @@ class Tag(models.Model):
 
 class Customer(models.Model):
     name = models.CharField(max_length=64, null=True, blank=True)
+    slug = models.SlugField(max_length=128, unique=True)
     lastname = models.CharField(max_length=64, null=True, blank=True)
     email = models.EmailField(null=True, blank=True, validators=[EmailValidator])
     phone = models.CharField(max_length=32, blank=True, null=True)
@@ -45,7 +50,7 @@ class Category(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=256)
-    slug = models.SlugField(max_length=256)
+    slug = models.SlugField(max_length=256, unique=True)
     content = models.TextField(null=True, blank=True)
     progress = models.PositiveIntegerField(default=5, validators=[MinValueValidator(0), MaxValueValidator(100)])
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
