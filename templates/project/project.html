@@ -6,5 +6,18 @@
 {% block content %}
     <p> {{ project.customer }}</p>
     <p>{{ project.id }}</p>
+    <p>Tags: </p>
+    <ul>
+        {% for tag in tags %}
+            <li><a href="">{{ tag }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <p>Categories: </p>
+    <ul>
+        {% for category in categories %}
+            <li><a href="">{{ category }}</a></li>
+        {% endfor %}
+    </ul>
 
 {% endblock %}

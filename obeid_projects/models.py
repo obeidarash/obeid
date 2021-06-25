@@ -2,7 +2,9 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator, EmailValidator
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
-from django.db.models.signals import pre_save
+
+
+# from django.db.models.signals import pre_save
 
 
 class ProjectManager(models.Manager):
