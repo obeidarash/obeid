@@ -18,10 +18,13 @@ class ProjectManager(models.Manager):
     def all_published_projects(self):
         return self.get_queryset().filter(publish=True)
 
+    def projects_by_category(self, category):
+        return self.get_queryset().filter(category__project__category=category, publish=True).distinct()
+
 
 class Tag(models.Model):
     title = models.CharField(max_length=32)
-    slug = models.SlugField(max_length=32)
+    slug = models.SlugField(max_length=32, unique=True)
 
     def __str__(self):
         return self.title
@@ -41,7 +44,7 @@ class Customer(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=64, unique=True)
-    slug = models.SlugField(max_length=64, unique=True, blank=True)
+    slug = models.SlugField(max_length=64, unique=True)
 
     def __str__(self):
         return self.title

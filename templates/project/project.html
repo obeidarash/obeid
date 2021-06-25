@@ -16,7 +16,7 @@
     <p>Categories: </p>
     <ul>
         {% for category in categories %}
-            <li><a href="">{{ category }}</a></li>
+            <li><a href="{% url 'project:category' category.slug %}">{{ category }}</a></li>
         {% endfor %}
     </ul>
 
