@@ -25,6 +25,8 @@ class ProjectManager(models.Manager):
 class Tag(models.Model):
     title = models.CharField(max_length=32)
     slug = models.SlugField(max_length=32, unique=True)
+    create = models.DateTimeField(auto_now_add=True)
+    publish = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -37,6 +39,8 @@ class Customer(models.Model):
     email = models.EmailField(null=True, blank=True, validators=[EmailValidator])
     phone = models.CharField(max_length=32, blank=True, null=True)
     country = CountryField(null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True)
+    publish = models.BooleanField(default=True)
 
     def __str__(self):
         return "{} {}".format(self.name, self.lastname)
@@ -45,6 +49,8 @@ class Customer(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=64, unique=True)
     slug = models.SlugField(max_length=64, unique=True)
+    create = models.DateTimeField(auto_now_add=True)
+    publish = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title
@@ -61,6 +67,8 @@ class Project(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.SET_NULL, null=True, blank=True)
     category = models.ManyToManyField(Category, blank=True, verbose_name='Categories')
     tag = models.ManyToManyField(Tag, blank=True)
+    update = models.DateTimeField(auto_now=True)
+    create = models.DateTimeField(auto_now_add=True)
     publish = models.BooleanField(default=True)
     objects = ProjectManager()
 

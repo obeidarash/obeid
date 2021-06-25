@@ -1,6 +1,6 @@
 {% extends "shared/MainReferences.html" %}
 
-{% block title %}Detail{% endblock %}
+{% block title %}{{ project.title }}{% endblock %}
 {% block heading %}{{ project.title }}{% endblock %}
 
 {% block content %}
@@ -19,5 +19,8 @@
             <li><a href="{% url 'project:category' category.slug %}">{{ category }}</a></li>
         {% endfor %}
     </ul>
+
+    <p>Create: {{ project.create | time }}</p>
+    <p>Update: {{ project.update | time }}</p>
 
 {% endblock %}

@@ -8,7 +8,7 @@ class ProjectCategory(ListView):
     template_name = 'project/projects.html'
     context_object_name = 'projects'
     paginate_by = 10
-    ordering = ['-id']
+    ordering = ['-update']
 
     def get_queryset(self):
         category_slug = self.kwargs['category_slug']
@@ -24,7 +24,7 @@ class ProjectList(ListView):
     queryset = Project.objects.all_published_projects()
     context_object_name = 'projects'
     paginate_by = 10
-    ordering = ['-id']
+    ordering = ['-update']
     template_name = 'project/projects.html'
 
 
