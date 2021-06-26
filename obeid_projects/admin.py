@@ -15,20 +15,23 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(Category)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'update')
     search_fields = ('title',)
+    ordering = ('-update',)
     prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(Tag)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title',)
+    list_display = ('title', 'update')
     search_fields = ('title',)
+    ordering = ('-update',)
     prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(Customer)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'lastname', 'email')
+    list_display = ('name', 'lastname', 'email', 'update')
     search_fields = ('name', 'lastname')
     prepopulated_fields = {'slug': ('name', 'lastname')}
+    ordering = ('-update',)
