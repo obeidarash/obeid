@@ -1,7 +1,7 @@
 {% for project in projects %}
     <div class="card">
         <div class="card-body">
-            <a href="{% url 'project:detail' project.id %}"><h5 class="card-title">{{ project.title }}</h5></a>
+            <a href="{% url 'project:detail' project.slug %}"><h5 class="card-title">{{ project.title }}</h5></a>
 {#            <h6 class="card-subtitle mb-2 text-muted">web</h6>#}
 {#            {% if project.content %}#}
 {#                <p class="card-text">{{ project.content }}</p>#}

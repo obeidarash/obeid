@@ -8,8 +8,8 @@ from django_countries.fields import CountryField
 
 
 class ProjectManager(models.Manager):
-    def published_project(self, project_id):
-        qs = self.get_queryset().filter(id=project_id, publish=True)
+    def published_project(self, project_slug):
+        qs = self.get_queryset().filter(slug=project_slug, publish=True)
         if qs.count() == 1:
             return qs.first()
         else:

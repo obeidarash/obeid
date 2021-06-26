@@ -47,9 +47,8 @@ class ProjectList(ListView):
     template_name = 'project/projects.html'
 
 
-def project_detail(request, project_id):
-    # todo: show slug of the project in the url
-    project = Project.objects.published_project(project_id)
+def project_detail(request, project_slug):
+    project = Project.objects.published_project(project_slug)
     if project is None:
         raise Http404('Ops!')
     tag: Tag = Tag.objects.first()
