@@ -1,25 +1,35 @@
 {% extends "shared/MainReferences.html" %}
-
+{% block keywords %}{{ project.tag.all|join:', ' }}{% endblock %}
+{% block description %}{{ project.content }}{% endblock %}
 {% block title %}{{ project.title }}{% endblock %}
 {% block heading %}{{ project.title }}{% endblock %}
 
 {% block content %}
+    <div class="card text-center">
+        <div class="card-header">
+            {{ project.title }}
+        </div>
+        <div class="card-body">
+            <h2 class="card-title">Special title treatment</h2>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+        <div class="card-footer text-muted">
+            Tags:
+            {% for tag in project.tag.all %}
+                <a href="{% url 'project:tag' tag.slug %}">{{ tag.title }}</a>,
+            {% endfor %}
+            / Categories:
+            {% for category in project.category.all %}
+                <a href="{% url 'project:category' category.slug %}">{{ category.title }}</a>,
+            {% endfor %}
+            /
+            {{ project.create }}
+        </div>
+    </div>
+
     <p> {{ project.customer }}</p>
     <p>{{ project.id }}</p>
-    <p>Tags: </p>
-    <ul>
-        {% for tag in tags %}
-            <li><a href="{% url 'project:tag' tag.slug %}">{{ tag }}</a></li>
-        {% endfor %}
-    </ul>
-
-    <p>Categories: </p>
-    <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'project:category' category.slug %}">{{ category }}</a></li>
-        {% endfor %}
-    </ul>
-
     <p>Create: {{ project.create | time }}</p>
     <p>Update: {{ project.update | time }}</p>
 

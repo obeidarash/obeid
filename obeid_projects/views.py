@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from .models import Project, Category, Tag
 
@@ -48,17 +48,12 @@ class ProjectList(ListView):
 
 
 def project_detail(request, project_slug):
+    # project = get_object_or_404(Project, slug=project_slug)
     project = Project.objects.published_project(project_slug)
     if project is None:
         raise Http404('Ops!')
-    tag: Tag = Tag.objects.first()
-    tags = project.tag.all()
-    category: Category = Category.objects.first()
-    categories = project.category.all()
-    # print(tag.project_set.all())
+
     context = {
         'project': project,
-        'tags': tags,
-        'categories': categories
     }
     return render(request, 'project/project.html', context)

@@ -5,10 +5,10 @@ from .models import Project, Customer, Category, Tag
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     ordering = ('-update',)
-    list_display = ('title', 'customer', 'publish', 'update')
+    list_display = ('title', 'customer', 'update', 'publish')
     autocomplete_fields = ('tag', 'category', 'customer')
     search_fields = ('title',)
-    list_editable = ('publish',)
+    # list_editable = ('publish',)
     list_filter = ('publish', 'create', 'update')
     prepopulated_fields = {'slug': ('title',)}
 
