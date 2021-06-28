@@ -3,7 +3,6 @@ from django.core.validators import MinValueValidator, MaxValueValidator, EmailVa
 from django.contrib.auth.models import User
 from django_countries.fields import CountryField
 
-
 # from django.db.models.signals import pre_save
 
 

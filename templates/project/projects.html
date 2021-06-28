@@ -1,7 +1,10 @@
 {% extends 'shared/MainReferences.html' %}
 {% block keywords %}{% endblock %}
 
-{% block heading %}Projects{% endblock %}
+{% block heading %}
+        <h1>Projects</h1>
+        <hr>
+    {% endblock %}
 {% block content %}
 
     {% include 'project/projects_component.html' with id=projects %}
