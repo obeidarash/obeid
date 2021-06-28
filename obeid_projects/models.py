@@ -65,7 +65,7 @@ class Category(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=256)
     slug = models.SlugField(max_length=256, unique=True)
-    content = models.TextField(null=True, blank=True, help_text="Doesnt show in the project list & detail")
+    content = models.TextField(null=True, blank=True)
     progress = models.PositiveIntegerField(default=5,
                                            validators=[MinValueValidator(0), MaxValueValidator(100)],
                                            help_text='Pick a number between 0 to 100')
