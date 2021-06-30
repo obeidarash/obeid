@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'obeid_contact',
     'obeid_projects',
     'django_countries',
     'django_render_partial',
