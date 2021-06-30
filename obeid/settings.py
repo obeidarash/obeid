@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'obeid_projects',
+    'obeid_tools',
     'django_countries',
     'django_render_partial',
 ]

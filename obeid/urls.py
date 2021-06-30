@@ -7,7 +7,8 @@ from .views import home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    path('', include('obeid_projects.urls', namespace='project'))
+    path('', include('obeid_projects.urls', namespace='project')),
+    path('', include('obeid_tools.urls', namespace='tools'))
 ]
 
 if settings.DEBUG:
