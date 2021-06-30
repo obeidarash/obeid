@@ -2,7 +2,21 @@
 {% block keywords %}{% endblock %}
 {% block description %}{% endblock %}
 {% block title %}YouTube{% endblock %}
+{% block heading %}
+    <h3>Youtube</h3>
+    <hr>
+{% endblock %}
 
 {% block content %}
-youtube
+    <form action="" method="post" class="form-">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="{{ youtube.url.id_for_label }}">{{ youtube.url.label }}:</label>
+            {{ youtube.errors }}
+            {{ youtube.url }}
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Download</button>
+    </form>
+    {{ yt }}
+
 {% endblock %}
