@@ -9,13 +9,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    {% url 'home' as home %}
+                    <a class="nav-link{% if request.path == home %} active{% endif %}" aria-current="page"
+                       href="{% url 'home' %}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'project:list' %}">Projects</a>
+                    {% url 'project:list'  as project %}
+                    <a class="nav-link{% if request.path == project %} active{% endif %}"
+                       href="{% url 'project:list' %}">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'tools:youtube' %}">Youtube</a>
+                    {% url 'tools:youtube' as youtube %}
+                    <a class="nav-link{% if request.path == youtube %} active{% endif %}"
+                       href="{% url 'tools:youtube' %}">Youtube</a>
                 </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">

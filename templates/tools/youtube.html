@@ -15,8 +15,33 @@
             {{ youtube.errors }}
             {{ youtube.url }}
         </div>
-        <button type="submit" class="btn btn-outline-dark">Download</button>
+        <button type="submit" class="btn btn-dark">Download</button>
     </form>
-    {{ yt }}
+
+    {% if video %}
+        <hr>
+        <h5>{{ video.title }} </h5>
+        <img src="{{ video.bigthumb }}" alt="{{ video.title }}" class="img-fluid align-middle">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Quality</th>
+                <th>Size</th>
+                <th>Format</th>
+                <th>Download</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for s in video.streams %}
+                <tr>
+                    <td>{{ s.quality }}</td>
+                    <td>{{ s.get_filesize|filesizeformat }}</td>
+                    <td>{{ s.extension }}</td>
+                    <td><a class="btn btn-info" href="{{ s.url }}">Download</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
 {% endblock %}
