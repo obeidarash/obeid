@@ -18,11 +18,13 @@
                     <a class="nav-link{% if request.path == project %} active{% endif %}"
                        href="{% url 'project:list' %}">Projects</a>
                 </li>
-                <li class="nav-item">
-                    {% url 'tools:youtube' as youtube %}
-                    <a class="nav-link{% if request.path == youtube %} active{% endif %}"
-                       href="{% url 'tools:youtube' %}">Youtube</a>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        {% url 'tools:youtube' as youtube %}
+                        <a class="nav-link{% if request.path == youtube %} active{% endif %}"
+                           href="{% url 'tools:youtube' %}">Youtube</a>
+                    </li>
+                {% endif %}
                 {% if request.user.is_authenticated %}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

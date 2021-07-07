@@ -1,12 +1,58 @@
 {% extends 'shared/MainReferences.html' %}
-{% block title %}
-    Obeid Arash Blog
-{% endblock %}
+{% block description %}I am a web scraper expert who is interested in web Developing{% endblock %}
+{% block keywords %}Web Developer, Web Scraper, Data Scraping{% endblock %}
+{% block title %}Obeid Arash{% endblock %}
 {% block heading %}
-        <h1>Obeid Arash Blog</h1>
-        <hr>
-    {% endblock %}
+    <h1>Obeid Arash Blog</h1>
+    <hr>
+{% endblock %}
 {% block content %}
+
+    <div class="row">
+        <div class="col-xl-6">
+            <h4 class="alert-heading">Latest Projects</h4>
+            <ul class="list-group list-group-flush">
+                {% for latest_project in latest_projects %}
+                    <li class="list-group-item"><a href="{% url 'project:detail' latest_project.slug %}">
+                        {{ latest_project.title|truncatechars:35 }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-xl-6">
+            <h4>Completed Projects</h4>
+            <ul class="list-group list-group-flush">
+                {% for completed_project in completed_projects %}
+                    <li class="list-group-item"><a href="{% url 'project:detail' completed_project.slug %}">
+                        {{ completed_project.title|truncatechars:'35' }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!--  <div class="row">
+         <div class="col-xl-6">
+             <div class="card">
+                 <div class="card-body">
+                     <h5 class="card-title">Special title treatment</h5>
+                     <p class="card-text">With supporting text below as a natural lead-in to additional
+                         content.</p>
+                     <a href="#" class="btn btn-primary">Go somewhere</a>
+                 </div>
+             </div>
+         </div>
+         <div class="col-xl-6">
+             <div class="card">
+                 <div class="card-body">
+                     <h5 class="card-title">Special title treatment</h5>
+                     <p class="card-text">With supporting text below as a natural lead-in to additional
+                         content.</p>
+                     <a href="#" class="btn btn-primary">Go somewhere</a>
+                 </div>
+             </div>
+         </div>
+     </div> -->
+
+    <!--
     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Toggle bottom offcanvas
     </button>
@@ -25,40 +71,6 @@
             <p>Instagram: <a href="https://instagram.com/obeidarash" target="_blank">@obeidarash</a></p>
         </div>
     </div>
+    -->
 
-
-    <div class="card">
-        <div class="card-header">
-            Featured
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">Special title treatment</h5>
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional
-                        content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
