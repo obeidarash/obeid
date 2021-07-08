@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Youtube
 
-# Register your models here.
+
+@admin.register(Youtube)
+class YoutubeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'datetime')

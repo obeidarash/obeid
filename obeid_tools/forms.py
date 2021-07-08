@@ -7,6 +7,4 @@ class YoutubeForm(forms.Form):
         'placeholder': 'https://www.youtube.com/watch?v=LLJhUVkgcvQ',
         'class': 'form-control',
         'value': 'https://www.youtube.com/watch?v=LLJhUVkgcvQ'
-    }), required=False)
-
-# , validators=[validators.URLValidator(), ]
+    }), required=False, validators=[validators.URLValidator(), ])
