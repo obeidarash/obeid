@@ -20,28 +20,57 @@
 
     {% if video %}
         <hr>
-        <h5>{{ video.title }} </h5>
+        <h4>{{ video.title }} </h4>
         <img src="{{ video.bigthumb }}" alt="{{ video.title }}" class="img-fluid align-middle">
+        <h5>Videos:</h5>
         <table class="table">
             <thead>
             <tr>
                 <th>Quality</th>
                 <th>Size</th>
                 <th>Format</th>
+                <th>Type</th>
                 <th>Download</th>
             </tr>
             </thead>
             <tbody>
-            {% for s in video.streams %}
+            {% for s in video.videostreams %}
                 <tr>
                     <td>{{ s.quality }}</td>
                     <td>{{ s.get_filesize|filesizeformat }}</td>
                     <td>{{ s.extension }}</td>
+                    <td>{{ s.mediatype }}</td>
+                    <td><a class="btn btn-info" href="{{ s.url }}">Download</a>
+                        <a href="{{ s.download }}">test</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    {% if video %}
+        <h4>Audios:</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Quality</th>
+                <th>Size</th>
+                <th>Format</th>
+                <th>Type</th>
+                <th>Download</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for s in video.audiostreams %}
+                <tr>
+                    <td>{{ s.quality }}</td>
+                    <td>{{ s.get_filesize|filesizeformat }}</td>
+                    <td>{{ s.extension }}</td>
+                    <td>{{ s.mediatype }}</td>
                     <td><a class="btn btn-info" href="{{ s.url }}">Download</a></td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
     {% endif %}
-
 {% endblock %}

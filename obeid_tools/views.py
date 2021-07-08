@@ -15,6 +15,11 @@ def youtube(request):
         url = youtube_form.cleaned_data.get('url')
         video = pafy.new(url)
         youtube_form = YoutubeForm()
+        print(video.streams)
+        print(video.videostreams)
+        print(video.audiostreams)
+        print(video.allstreams)
+
     context = {
         'youtube': youtube_form,
         'video': video
