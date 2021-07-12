@@ -12,6 +12,10 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
 ]
 
+admin.site.site_header = "Obied Arash"
+admin.site.site_title = "Obeid Arash"
+admin.site.index_title = "Welcome to Obied Arash Admin Area"
+
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

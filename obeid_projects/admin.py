@@ -5,7 +5,7 @@ from .models import Project, Customer, Category, Tag
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     ordering = ('-update',)
-    list_display = ('title', 'customer', 'update', 'progress', 'publish')
+    list_display = ('title', 'customer', 'update', 'progress', 'publish'g)
     autocomplete_fields = ('tag', 'category', 'customer')
     search_fields = ('title',)
     # list_editable = ('publish', 'progress')
