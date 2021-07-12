@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'obeid_tools',
     'django_countries',
     'django_render_partial',
+    'tinymce',
 ]
 
 MIDDLEWARE = [
