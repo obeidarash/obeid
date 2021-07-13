@@ -76,6 +76,7 @@ class Project(models.Model):
     update = models.DateTimeField(auto_now=True)
     create = models.DateTimeField(auto_now_add=True)
     publish = models.BooleanField(default=True)
+    primary = models.BooleanField(default=False)
     objects = ProjectManager()
 
     def __str__(self):

@@ -1,11 +1,15 @@
 {% for project in projects %}
     <div class="card">
         <div class="card-body">
-            <a href="{% url 'project:detail' project.slug %}"><h5 class="card-title">{{ project.title }}</h5></a>
-{#            <h6 class="card-subtitle mb-2 text-muted">web</h6>#}
-{#            {% if project.content %}#}
-{#                <p class="card-text">{{ project.content }}</p>#}
-{#            {% endif %}#}
+            <a href="{% url 'project:detail' project.slug %}"><h5 class="card-title">{{ project.title }}
+                {% if project.primary == True %}
+                    <span class="badge rounded-pill bg-primary">Primary</span>
+                {% endif %}
+            </h5></a>
+            {#            <h6 class="card-subtitle mb-2 text-muted">web</h6>#}
+            {#            {% if project.content %}#}
+            {#                <p class="card-text">{{ project.content }}</p>#}
+            {#            {% endif %}#}
             {% if project.progress == 100 %}
                 <div class="progress">
                     <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="25"
